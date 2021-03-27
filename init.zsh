@@ -59,8 +59,8 @@ p6df::modules::azure::langs() {
 ######################################################################
 p6df::modules::azure::home::symlink() {
 
-  ln -fs $P6_DFZ_SRC_DIR/$USER/home-private/azure .azure
-  ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-azure/share/.azuredatastudio .azuredatastudio
+  echo ln -fs $P6_DFZ_SRC_DIR/$USER/home-private/azure .azure
+#  ln -fs $P6_DFZ_SRC_DIR/$USER/home-private/azure .azure
 }
 
 ######################################################################
