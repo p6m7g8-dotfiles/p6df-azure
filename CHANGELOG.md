@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/p6m7g8/p6df-azure/compare/v2.1.0...v2.1.1) (2021-04-04)
+
+
+### Features
+
+* **symlink:** links .azuredatastudio ([#20](https://github.com/p6m7g8/p6df-azure/issues/20)) ([9a4e4fb](https://github.com/p6m7g8/p6df-azure/commit/9a4e4fb67b2b0ce73cd659c546db39814dd4bfac))
+
+
+* **link:** remove rendundant symlinks; echo for now ([#22](https://github.com/p6m7g8/p6df-azure/issues/22)) ([c5ba15c](https://github.com/p6m7g8/p6df-azure/commit/c5ba15cf133fbb52c80a1c711c3ec00c465d576b))
+* **README:** updates generator ([#21](https://github.com/p6m7g8/p6df-azure/issues/21)) ([4db7f87](https://github.com/p6m7g8/p6df-azure/commit/4db7f87f15442cfcc3203f7939bc9301d8b169ab))
+* Coc -> .github ([999452d](https://github.com/p6m7g8/p6df-azure/commit/999452db9249db7236e7fa6624dcb724e0a7a94b))
+
 ## [2.1.0](https://github.com/p6m7g8/p6df-azure/compare/v2.0.0...v2.1.0) (2020-12-06)
 
 
