@@ -9,7 +9,7 @@
 ######################################################################
 p6df::modules::azure::deps() {
   ModuleDeps=(
-    p6m7g8/p6common
+    p6m7g8-dotfiles/p6common
   )
 }
 
