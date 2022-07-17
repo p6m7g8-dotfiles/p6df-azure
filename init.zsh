@@ -55,6 +55,7 @@ p6df::modules::azure::langs() {
 #
 # Function: p6df::modules::azure::home::symlink()
 #
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::modules::azure::home::symlink() {
@@ -75,11 +76,25 @@ p6df::modules::azure::init() {
   p6df::modules::azure::prompt::init
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::prompt::init()
+#
+#>
+######################################################################
 p6df::modules::azure::prompt::init() {
 
   p6df::core::prompt::line::add "p6df::modules::azure::prompt::line"
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::completions::init()
+#
+#>
+######################################################################
 p6df::modules::azure::completions::init() {
 
   autoload -U +X bashcompinit && bashcompinit
@@ -107,6 +122,7 @@ p6df::modules::azure::prompt::line() {
 #  Returns:
 #	str - str
 #
+#  Environment:	 HOME
 #>
 ######################################################################
 p6_azure_prompt_info() {
