@@ -1,5 +1,4 @@
-#####################################################################
-
+# shellcheck shell=bash
 ######################################################################
 #<
 #
@@ -26,6 +25,8 @@ p6df::modules::azure::external::brew() {
   brew install --cask azure-data-studio
   brew install --cask microsoft-azure-storage-explorer
   brew install --cask powershell
+
+  p6_return_void
 }
 
 ######################################################################
@@ -48,6 +49,8 @@ p6df::modules::azure::langs() {
   az extension add --name portal
   az extension add --name subscription
   az extension add --name vm-repair
+
+  p6_return_void
 }
 
 ######################################################################
@@ -61,6 +64,8 @@ p6df::modules::azure::langs() {
 p6df::modules::azure::home::symlink() {
 
   p6_file_symlink "$P6_DFZ_SRC_DIR/$USER/home-private/azure" ".azure"
+  
+  p6_return_void
 }
 
 ######################################################################
@@ -74,6 +79,24 @@ p6df::modules::azure::init() {
 
   p6df::modules::azure::completions::init
   p6df::modules::azure::prompt::init
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::completions::init()
+#
+#  Environment:	 HOMEBREW_PREFIX
+#>
+######################################################################
+p6df::modules::azure::completions::init() {
+
+  autoload -U +X bashcompinit && bashcompinit
+  p6_file_load "$HOMEBREW_PREFIX/etc/bash_completion.d/az"
+
+  p6_return_void
 }
 
 ######################################################################
@@ -86,19 +109,6 @@ p6df::modules::azure::init() {
 p6df::modules::azure::prompt::init() {
 
   p6df::core::prompt::line::add "p6df::modules::azure::prompt::line"
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::completions::init()
-#
-#>
-######################################################################
-p6df::modules::azure::completions::init() {
-
-  autoload -U +X bashcompinit && bashcompinit
-  p6_file_load "$HOMEBREW_PREFIX/etc/bash_completion.d/az"
 }
 
 ######################################################################
