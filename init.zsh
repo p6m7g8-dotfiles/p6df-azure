@@ -8,7 +8,7 @@
 ######################################################################
 p6df::modules::azure::deps() {
   ModuleDeps=(
-    p6m7g8-dotfiles/p6common
+    p6m7g8-dotfiles/p6df-zsh
   )
 }
 
@@ -71,21 +71,6 @@ p6df::modules::azure::home::symlink() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::azure::init()
-#
-#>
-######################################################################
-p6df::modules::azure::init() {
-
-  p6df::modules::azure::completions::init
-  p6df::modules::azure::prompt::init
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
 # Function: p6df::modules::azure::completions::init()
 #
 #  Environment:	 HOMEBREW_PREFIX
@@ -102,32 +87,7 @@ p6df::modules::azure::completions::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::azure::prompt::init()
-#
-#>
-######################################################################
-p6df::modules::azure::prompt::init() {
-
-  p6df::core::prompt::line::add "p6df::modules::azure::prompt::line"
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::prompt::line()
-#
-#>
-######################################################################
-p6df::modules::azure::prompt::line() {
-
-  p6_azure_prompt_info
-}
-
-## XXX: move to p6azure
-######################################################################
-#<
-#
-# Function: str str = p6_azure_prompt_info()
+# Function: str str = p6df::modules::azure::prompt::line()
 #
 #  Returns:
 #	str - str
@@ -135,7 +95,7 @@ p6df::modules::azure::prompt::line() {
 #  Environment:	 HOME
 #>
 ######################################################################
-p6_azure_prompt_info() {
+p6df::modules::azure::prompt::line() {
 
   local str
   if p6_file_exists "$HOME/.azure/accessTokens.json"; then
