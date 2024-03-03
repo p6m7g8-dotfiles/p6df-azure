@@ -64,7 +64,7 @@ p6df::modules::azure::langs() {
 p6df::modules::azure::home::symlink() {
 
   p6_file_symlink "$P6_DFZ_SRC_DIR/$USER/home-private/azure" ".azure"
-  
+
   p6_return_void
 }
 
@@ -99,26 +99,26 @@ p6df::modules::azure::prompt::line() {
 
   local str
   if p6_file_exists "$HOME/.azure/accessTokens.json"; then
-      local mtime=$(p6_dt_mtime "$HOME/.azure/accessTokens.json")
-      local now=$(p6_dt_now_epoch_seconds)
-      local diff=$(p6_math_sub "$now" "$mtime")
+    local mtime=$(p6_dt_mtime "$HOME/.azure/accessTokens.json")
+    local now=$(p6_dt_now_epoch_seconds)
+    local diff=$(p6_math_sub "$now" "$mtime")
 
-      if ! p6_math_gt "$diff" "2700"; then
-          local subscription=$(cat $HOME/.azure/clouds.config | awk -F= '/subscription/ { print $2 }' | sed -e 's, *,,g')
-          local name=$(jq < $HOME/.azure/azureProfile.json | grep -A 12 $subscription | grep name |grep -v '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
-          local user=$(jq < $HOME/.azure/azureProfile.json | grep -A 12 $subscription | grep name |grep '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
+    if ! p6_math_gt "$diff" "2700"; then
+      local subscription=$(cat $HOME/.azure/clouds.config | awk -F= '/subscription/ { print $2 }' | sed -e 's, *,,g')
+      local name=$(jq <$HOME/.azure/azureProfile.json | grep -A 12 $subscription | grep name | grep -v '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
+      local user=$(jq <$HOME/.azure/azureProfile.json | grep -A 12 $subscription | grep name | grep '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
 
-	  local sts
-          if p6_math_gt "$diff" "2400"; then
-              sts=$(p6_color_ize "red" "black" "sts:$diff")
-          elif p6_math_gt "$diff" "2100"; then
-              sts=$(p6_color_ize "yellow" "black" "sts:$diff")
-          else
-              sts="sts:$diff"
-          fi
-
-          str="azure:    _active:[$name - $user] [] () ($sts)"
+      local sts
+      if p6_math_gt "$diff" "2400"; then
+        sts=$(p6_color_ize "red" "black" "sts:$diff")
+      elif p6_math_gt "$diff" "2100"; then
+        sts=$(p6_color_ize "yellow" "black" "sts:$diff")
+      else
+        sts="sts:$diff"
       fi
+
+      str="azure:    _active:[$name - $user] [] () ($sts)"
+    fi
   fi
 
   p6_return_str "$str"
