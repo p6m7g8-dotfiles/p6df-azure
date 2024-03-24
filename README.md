@@ -10,8 +10,7 @@
   - [Summary](#summary)
   - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [Changes](#changes)
-    - [Usage](#usage)
+  - [Usage](#usage)
   - [Author](#author)
 
 ### Badges
@@ -34,17 +33,19 @@
 
 - [Code of Conduct](https://github.com/p6m7g8/.github/blob/master/CODE_OF_CONDUCT.md)
 
-## Changes
-
-- [Change Log](CHANGELOG.md)
-
 ## Usage
+
+
+### Aliases
+
+
+### Functions
 
 ### p6df-azure:
 
 #### p6df-azure/init.zsh:
 
-- p6df::modules::azure::completions::init()
+- p6df::modules::azure::completions::init(_module, dir)
 - p6df::modules::azure::deps()
 - p6df::modules::azure::external::brew()
 - p6df::modules::azure::home::symlink()
