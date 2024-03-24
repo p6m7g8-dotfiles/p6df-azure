@@ -21,10 +21,10 @@ p6df::modules::azure::deps() {
 ######################################################################
 p6df::modules::azure::external::brew() {
 
-  brew install azure-cli
-  brew install --cask azure-data-studio
-  brew install --cask microsoft-azure-storage-explorer
-  brew install --cask powershell
+  p6df::modules::homebrew::cli::brew::install azure-cli
+  p6df::modules::homebrew::cli::brew::install --cask azure-data-studio
+  p6df::modules::homebrew::cli::brew::install --cask microsoft-azure-storage-explorer
+  p6df::modules::homebrew::cli::brew::install --cask powershell
 
   p6_return_void
 }
@@ -71,12 +71,18 @@ p6df::modules::azure::home::symlink() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::azure::completions::init()
+# Function: p6df::modules::azure::completions::init(_module, dir)
+#
+#  Args:
+#	_module -
+#	dir -
 #
 #  Environment:	 HOMEBREW_PREFIX
 #>
 ######################################################################
 p6df::modules::azure::completions::init() {
+  local _module="$1"
+  local dir="$2"
 
   autoload -U +X bashcompinit && bashcompinit
   p6_file_load "$HOMEBREW_PREFIX/etc/bash_completion.d/az"
