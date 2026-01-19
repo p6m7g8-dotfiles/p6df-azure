@@ -93,7 +93,7 @@ p6df::modules::azure::completions::init() {
 ######################################################################
 #<
 #
-# Function: str str = p6df::modules::azure::prompt::line()
+# Function: str str = p6df::modules::azure::prompt::mod()
 #
 #  Returns:
 #	str - str
@@ -101,7 +101,7 @@ p6df::modules::azure::completions::init() {
 #  Environment:	 HOME
 #>
 ######################################################################
-p6df::modules::azure::prompt::line() {
+p6df::modules::azure::prompt::mod() {
 
   local str
   if p6_file_exists "$HOME/.azure/accessTokens.json"; then
@@ -110,9 +110,9 @@ p6df::modules::azure::prompt::line() {
     local diff=$(p6_math_sub "$now" "$mtime")
 
     if ! p6_math_gt "$diff" "2700"; then
-      local subscription=$(cat $HOME/.azure/clouds.config | awk -F= '/subscription/ { print $2 }' | sed -e 's, *,,g')
-      local name=$(jq <$HOME/.azure/azureProfile.json | grep -A 12 $subscription | grep name | grep -v '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
-      local user=$(jq <$HOME/.azure/azureProfile.json | grep -A 12 $subscription | grep name | grep '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
+      local subscription=$(cat "$HOME"/.azure/clouds.config | awk -F= '/subscription/ { print $2 }' | sed -e 's, *,,g')
+      local name=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 "$subscription" | grep name | grep -v '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
+      local user=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 "$subscription" | grep name | grep '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
 
       local sts
       if p6_math_gt "$diff" "2400"; then
