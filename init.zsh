@@ -58,7 +58,7 @@ p6df::modules::azure::langs() {
 #
 # Function: p6df::modules::azure::home::symlink()
 #
-#  Environment:	 P6_DFZ_SRC_DIR
+#  Environment:	 P6_DFZ_SRC_DIR USER
 #>
 ######################################################################
 p6df::modules::azure::home::symlink() {
