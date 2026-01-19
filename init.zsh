@@ -111,8 +111,8 @@ p6df::modules::azure::prompt::mod() {
 
     if ! p6_math_gt "$diff" "2700"; then
       local subscription=$(cat "$HOME"/.azure/clouds.config | awk -F= '/subscription/ { print $2 }' | sed -e 's, *,,g')
-      local name=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 $subscription | grep name | grep -v '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
-      local user=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 $subscription | grep name | grep '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
+      local name=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 "$subscription" | grep name | grep -v '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
+      local user=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 "$subscription" | grep name | grep '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
 
       local sts
       if p6_math_gt "$diff" "2400"; then
