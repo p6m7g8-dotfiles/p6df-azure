@@ -93,7 +93,7 @@ p6df::modules::azure::completions::init() {
 ######################################################################
 #<
 #
-# Function: str str = p6df::modules::azure::prompt::line()
+# Function: str str = p6df::modules::azure::prompt::mod()
 #
 #  Returns:
 #	str - str
@@ -101,7 +101,7 @@ p6df::modules::azure::completions::init() {
 #  Environment:	 HOME
 #>
 ######################################################################
-p6df::modules::azure::prompt::line() {
+p6df::modules::azure::prompt::mod() {
 
   local str
   if p6_file_exists "$HOME/.azure/accessTokens.json"; then
