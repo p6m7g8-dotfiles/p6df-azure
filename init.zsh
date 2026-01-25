@@ -110,9 +110,9 @@ p6df::modules::azure::prompt::mod() {
     local diff=$(p6_math_sub "$now" "$mtime")
 
     if ! p6_math_gt "$diff" "2700"; then
-      local subscription=$(cat "$HOME"/.azure/clouds.config | awk -F= '/subscription/ { print $2 }' | sed -e 's, *,,g')
-      local name=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 "$subscription" | grep name | grep -v '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
-      local user=$(jq <"$HOME"/.azure/azureProfile.json | grep -A 12 "$subscription" | grep name | grep '@' | sed -e 's,.*:,,' -e 's/[",]//g' -e 's,^ *,,')
+      local subscription=$(p6_file_display "$HOME/.azure/clouds.config" | p6_filter_kv_value subscription "=")
+      local name=$(jq <"$HOME"/.azure/azureProfile.json | p6_filter_row_select_and_after "$subscription" 12 | p6_filter_row_select "name" | p6_filter_row_exclude "@" | p6_filter_extract_after ":" | p6_filter_strip_chars '",' | p6_filter_strip_leading_spaces)
+      local user=$(jq <"$HOME"/.azure/azureProfile.json | p6_filter_row_select_and_after "$subscription" 12 | p6_filter_row_select "name" | p6_filter_row_select "@" | p6_filter_extract_after ":" | p6_filter_strip_chars '",' | p6_filter_strip_leading_spaces)
 
       local sts
       if p6_math_gt "$diff" "2400"; then
