@@ -21,10 +21,10 @@ p6df::modules::azure::deps() {
 ######################################################################
 p6df::modules::azure::external::brew() {
 
-  p6df::modules::homebrew::cli::brew::install azure-cli
-  p6df::modules::homebrew::cli::brew::install --cask azure-data-studio
-  p6df::modules::homebrew::cli::brew::install --cask microsoft-azure-storage-explorer
-  p6df::modules::homebrew::cli::brew::install --cask powershell
+  p6df::core::homebrew::cli::brew::install azure-cli
+  p6df::core::homebrew::cli::brew::install --cask azure-data-studio
+  p6df::core::homebrew::cli::brew::install --cask microsoft-azure-storage-explorer
+  p6df::core::homebrew::cli::brew::install --cask powershell
 
   p6_return_void
 }
