@@ -36,6 +36,9 @@ TODO: Add a short summary of this module.
 ##### p6df-azure/init.zsh
 
 - `p6df::modules::azure::completions::init(_module, dir)`
+  - Args:
+    - _module - 
+    - dir - 
 - `p6df::modules::azure::deps()`
 - `p6df::modules::azure::external::brew()`
 - `p6df::modules::azure::home::symlink()`
