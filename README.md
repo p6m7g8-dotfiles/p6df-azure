@@ -17,7 +17,9 @@
 
 ## Summary
 
-TODO: Add a short summary of this module.
+p6df module for Microsoft Azure: CLI tools (`azure-cli`), extensions, prompt
+integration, and MCP server (`@azure/mcp` via npm) for AI-driven Azure
+resource and subscription management.
 
 ## Contributing
 
@@ -37,12 +39,13 @@ TODO: Add a short summary of this module.
 
 - `p6df::modules::azure::completions::init(_module, dir)`
   - Args:
-    - _module - 
-    - dir - 
+    - _module
+    - dir
 - `p6df::modules::azure::deps()`
 - `p6df::modules::azure::external::brew()`
 - `p6df::modules::azure::home::symlink()`
 - `p6df::modules::azure::langs()`
+- `p6df::modules::azure::mcp()`
 - `str str = p6df::modules::azure::prompt::mod()`
 
 ## Hierarchy
