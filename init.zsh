@@ -129,3 +129,17 @@ p6df::modules::azure::prompt::mod() {
 
   p6_return_str "$str"
 }
+
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::mcp()
+#
+#>
+######################################################################
+p6df::modules::azure::mcp() {
+
+  p6_js_npm_global_install "@azure/mcp"
+
+  p6_return_void
+}
