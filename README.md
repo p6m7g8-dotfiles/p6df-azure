@@ -17,9 +17,9 @@
 
 ## Summary
 
-p6df module for Microsoft Azure: CLI tools (`azure-cli`), extensions, prompt
-integration, and MCP server (`@azure/mcp` via npm) for AI-driven Azure
-resource and subscription management.
+p6df module for Azure: az CLI, profile switching, MCP servers
+(`@azure/mcp` and `@leonardocrdso/office365-mcp-server` via npm)
+for AI-driven Azure and Microsoft 365 operations.
 
 ## Contributing
 
