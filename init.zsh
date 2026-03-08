@@ -140,6 +140,7 @@ p6df::modules::azure::prompt::mod() {
 p6df::modules::azure::mcp() {
 
   p6_js_npm_global_install "@azure/mcp"
+  p6_js_npm_global_install "@leonardocrdso/office365-mcp-server"
 
   p6_return_void
 }
