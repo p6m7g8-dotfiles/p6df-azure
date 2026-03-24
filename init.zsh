@@ -111,8 +111,8 @@ p6df::modules::azure::prompt::mod() {
 
     if ! p6_math_gt "$diff" "2700"; then
       local subscription=$(p6_file_display "$HOME/.azure/clouds.config" | p6_filter_kv_value subscription "=")
-      local name=$(jq <"$HOME"/.azure/azureProfile.json | p6_filter_row_select_and_after "$subscription" 12 | p6_filter_row_select "name" | p6_filter_row_exclude "@" | p6_filter_extract_after ":" | p6_filter_strip_chars '",' | p6_filter_strip_leading_spaces)
-      local user=$(jq <"$HOME"/.azure/azureProfile.json | p6_filter_row_select_and_after "$subscription" 12 | p6_filter_row_select "name" | p6_filter_row_select "@" | p6_filter_extract_after ":" | p6_filter_strip_chars '",' | p6_filter_strip_leading_spaces)
+      local name=$(p6_json_from_file "$HOME/.azure/azureProfile.json" | p6_filter_row_select_and_after "$subscription" 12 | p6_filter_row_select "name" | p6_filter_row_exclude "@" | p6_filter_extract_after ":" | p6_filter_strip_chars '",' | p6_filter_strip_leading_spaces)
+      local user=$(p6_json_from_file "$HOME/.azure/azureProfile.json" | p6_filter_row_select_and_after "$subscription" 12 | p6_filter_row_select "name" | p6_filter_row_select "@" | p6_filter_extract_after ":" | p6_filter_strip_chars '",' | p6_filter_strip_leading_spaces)
 
       local sts
       if p6_math_gt "$diff" "2400"; then
