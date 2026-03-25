@@ -71,6 +71,24 @@ p6df::modules::azure::home::symlink() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::azure::home::symlinks()
+#
+#  Environment:	 HOME P6_DFZ_SRC_DIR
+#>
+######################################################################
+p6df::modules::azure::home::symlinks() {
+
+  p6_file_symlink "$P6_DFZ_SRC_DIR/akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-generator"        "$HOME/.claude/skills/azure-pipelines-generator"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-validator"        "$HOME/.claude/skills/azure-pipelines-validator"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/hashicorp/agent-skills/packer/builders/skills/azure-image-builder"                       "$HOME/.claude/skills/azure-image-builder"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/hashicorp/agent-skills/packer/builders/skills/windows-builder"                           "$HOME/.claude/skills/windows-builder"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: p6df::modules::azure::completions::init(_module, dir)
 #
 #  Args:
