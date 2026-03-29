@@ -159,5 +159,8 @@ p6df::modules::azure::mcp() {
 
   p6_js_npm_global_install "@azure/mcp"
 
+  p6df::modules::anthropic::mcp::server::add "azure" "npx" "-y" "@azure/mcp"
+  p6df::modules::openai::mcp::server::add "azure" "npx" "-y" "@azure/mcp"
+
   p6_return_void
 }
