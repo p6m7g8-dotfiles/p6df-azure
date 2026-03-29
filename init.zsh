@@ -15,11 +15,11 @@ p6df::modules::azure::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::azure::external::brew()
+# Function: p6df::modules::azure::external::brews()
 #
 #>
 ######################################################################
-p6df::modules::azure::external::brew() {
+p6df::modules::azure::external::brews() {
 
   p6df::core::homebrew::cli::brew::install azure-cli
   p6df::core::homebrew::cli::brew::install --cask azure-data-studio
