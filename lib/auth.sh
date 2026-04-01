@@ -64,11 +64,6 @@ p6df::modules::azure::oauth::token() {
 #  Returns:
 #	str - {token}
 #
-#  Notes:
-#	Service principal equivalent of GWS Domain-Wide Delegation.
-#	Uses MSAL (installed via msgraph-sdk-python) to acquire a
-#	client-credentials token for application permissions.
-#
 #>
 ######################################################################
 p6df::modules::azure::auth::sp::token() {
