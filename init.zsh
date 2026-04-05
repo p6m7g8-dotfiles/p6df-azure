@@ -1,11 +1,5 @@
 # shellcheck shell=bash
 ######################################################################
-#<
-#
-# Function: p6df::modules::azure::deps()
-#
-#>
-######################################################################
 p6df::modules::azure::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6df-zsh
@@ -13,11 +7,31 @@ p6df::modules::azure::deps() {
 }
 
 ######################################################################
-#<
-#
-# Function: p6df::modules::azure::external::brews()
-#
-#>
+p6df::modules::azure::completions::init() {
+  local _module="$1"
+  local dir="$2"
+
+  autoload -U +X bashcompinit && bashcompinit
+  if p6_file_exists "$HOMEBREW_PREFIX/etc/bash_completion.d/az"; then
+    p6_file_load "$HOMEBREW_PREFIX/etc/bash_completion.d/az"
+  fi
+
+  p6_return_void
+}
+
+######################################################################
+p6df::modules::azure::home::symlinks() {
+
+  p6_file_symlink "$P6_DFZ_SRC_DIR/$USER/home-private/azure" ".azure"
+
+  p6_file_symlink "$P6_DFZ_SRC_DIR/akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-generator"        "$HOME/.claude/skills/azure-pipelines-generator"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-validator"        "$HOME/.claude/skills/azure-pipelines-validator"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/hashicorp/agent-skills/packer/builders/skills/azure-image-builder"                       "$HOME/.claude/skills/azure-image-builder"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/hashicorp/agent-skills/packer/builders/skills/windows-builder"                           "$HOME/.claude/skills/windows-builder"
+
+  p6_return_void
+}
+
 ######################################################################
 p6df::modules::azure::external::brews() {
 
@@ -29,12 +43,6 @@ p6df::modules::azure::external::brews() {
   p6_return_void
 }
 
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::langs()
-#
-#>
 ######################################################################
 p6df::modules::azure::langs() {
 
@@ -54,25 +62,40 @@ p6df::modules::azure::langs() {
 }
 
 ######################################################################
+p6df::modules::azure::mcp() {
+
+  p6_js_npm_global_install "@azure/mcp"
+
+  p6df::modules::anthropic::mcp::server::add "azure" "npx" "-y" "@azure/mcp"
+  p6df::modules::openai::mcp::server::add "azure" "npx" "-y" "@azure/mcp"
+
+  p6_return_void
+}
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::deps()
+#
+#>
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::external::brews()
+#
+#>
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::langs()
+#
+#>
+######################################################################
 #<
 #
 # Function: p6df::modules::azure::home::symlinks()
 #
 #  Environment:	 HOME P6_DFZ_SRC_DIR USER
 #>
-######################################################################
-p6df::modules::azure::home::symlinks() {
-
-  p6_file_symlink "$P6_DFZ_SRC_DIR/$USER/home-private/azure" ".azure"
-
-  p6_file_symlink "$P6_DFZ_SRC_DIR/akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-generator"        "$HOME/.claude/skills/azure-pipelines-generator"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/akin-ozer/cc-devops-skills/devops-skills-plugin/skills/azure-pipelines-validator"        "$HOME/.claude/skills/azure-pipelines-validator"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/hashicorp/agent-skills/packer/builders/skills/azure-image-builder"                       "$HOME/.claude/skills/azure-image-builder"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/hashicorp/agent-skills/packer/builders/skills/windows-builder"                           "$HOME/.claude/skills/windows-builder"
-
-  p6_return_void
-}
-
 ######################################################################
 #<
 #
@@ -84,17 +107,6 @@ p6df::modules::azure::home::symlinks() {
 #
 #  Environment:	 HOMEBREW_PREFIX
 #>
-######################################################################
-p6df::modules::azure::completions::init() {
-  local _module="$1"
-  local dir="$2"
-
-  autoload -U +X bashcompinit && bashcompinit
-  p6_file_load "$HOMEBREW_PREFIX/etc/bash_completion.d/az"
-
-  p6_return_void
-}
-
 ######################################################################
 #<
 #
@@ -141,13 +153,3 @@ p6df::modules::azure::prompt::context() {
 # Function: p6df::modules::azure::mcp()
 #
 #>
-######################################################################
-p6df::modules::azure::mcp() {
-
-  p6_js_npm_global_install "@azure/mcp"
-
-  p6df::modules::anthropic::mcp::server::add "azure" "npx" "-y" "@azure/mcp"
-  p6df::modules::openai::mcp::server::add "azure" "npx" "-y" "@azure/mcp"
-
-  p6_return_void
-}
