@@ -17,9 +17,7 @@
 
 ## Summary
 
-p6df module for Azure: az CLI, profile switching, MCP servers
-(`@azure/mcp` and `@leonardocrdso/office365-mcp-server` via npm)
-for AI-driven Azure and Microsoft 365 operations.
+TODO: Add a short summary of this module.
 
 ## Contributing
 
@@ -42,20 +40,40 @@ for AI-driven Azure and Microsoft 365 operations.
     - _module
     - dir
 - `p6df::modules::azure::deps()`
-- `p6df::modules::azure::external::brew()`
-- `p6df::modules::azure::home::symlink()`
+- `p6df::modules::azure::external::brews()`
+- `p6df::modules::azure::home::symlinks()`
 - `p6df::modules::azure::langs()`
 - `p6df::modules::azure::mcp()`
-- `str str = p6df::modules::azure::prompt::mod()`
+- `str str = p6df::modules::azure::prompt::context()`
+
+#### p6df-azure/lib
+
+##### p6df-azure/lib/auth.sh
+
+- `p6df::modules::azure::auth::login(email)`
+  - Args:
+    - email
+- `str {token} = p6df::modules::azure::auth::sp::token(client_id, client_secret, tenant_id, scopes)`
+  - Args:
+    - client_id
+    - client_secret
+    - tenant_id
+    - scopes
+- `str {token} = p6df::modules::azure::oauth::token(email, scopes)`
+  - Args:
+    - email
+    - scopes
 
 ## Hierarchy
 
 ```text
 .
 ├── init.zsh
+├── lib
+│   └── auth.sh
 └── README.md
 
-1 directory, 2 files
+2 directories, 3 files
 ```
 
 ## Author
