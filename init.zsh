@@ -1,5 +1,11 @@
 # shellcheck shell=bash
 ######################################################################
+#<
+#
+# Function: p6df::modules::azure::deps()
+#
+#>
+######################################################################
 p6df::modules::azure::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6df-zsh
@@ -7,18 +13,34 @@ p6df::modules::azure::deps() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::azure::completions::init(_module, dir)
+#
+#  Args:
+#	_module -
+#	dir -
+#
+#  Environment:	 HOMEBREW_PREFIX
+#>
+######################################################################
 p6df::modules::azure::completions::init() {
   local _module="$1"
   local dir="$2"
 
   autoload -U +X bashcompinit && bashcompinit
-  if p6_file_exists "$HOMEBREW_PREFIX/etc/bash_completion.d/az"; then
-    p6_file_load "$HOMEBREW_PREFIX/etc/bash_completion.d/az"
-  fi
+  p6_file_load "$HOMEBREW_PREFIX/etc/bash_completion.d/az"
 
   p6_return_void
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::home::symlinks()
+#
+#  Environment:	 HOME P6_DFZ_SRC_DIR USER
+#>
 ######################################################################
 p6df::modules::azure::home::symlinks() {
 
@@ -33,6 +55,12 @@ p6df::modules::azure::home::symlinks() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::azure::external::brews()
+#
+#>
+######################################################################
 p6df::modules::azure::external::brews() {
 
   p6df::core::homebrew::cli::brew::install azure-cli
@@ -43,6 +71,12 @@ p6df::modules::azure::external::brews() {
   p6_return_void
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::azure::langs()
+#
+#>
 ######################################################################
 p6df::modules::azure::langs() {
 
@@ -62,6 +96,12 @@ p6df::modules::azure::langs() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::azure::mcp()
+#
+#>
+######################################################################
 p6df::modules::azure::mcp() {
 
   p6_js_npm_global_install "@azure/mcp"
@@ -71,42 +111,6 @@ p6df::modules::azure::mcp() {
 
   p6_return_void
 }
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::deps()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::external::brews()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::langs()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::home::symlinks()
-#
-#  Environment:	 HOME P6_DFZ_SRC_DIR USER
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::completions::init(_module, dir)
-#
-#  Args:
-#	_module -
-#	dir -
-#
-#  Environment:	 HOMEBREW_PREFIX
-#>
 ######################################################################
 #<
 #
@@ -147,9 +151,3 @@ p6df::modules::azure::prompt::context() {
   p6_return_str "$str"
 }
 
-######################################################################
-#<
-#
-# Function: p6df::modules::azure::mcp()
-#
-#>
